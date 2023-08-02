@@ -8,3 +8,11 @@
 - git add -> adiciona arquivo a área de staging, para ser comitado
 - git commit -> grava a modificação no histórico do git
 - git log -> mostra o histórico de commits
+- git branch -> mostra os branches
+- git branch <X> -> criar branch X
+- git checkout <X> -> muda para branch X
+- git branch -D <X> -> apata branch X
+- git reset HEAD~X -> reverte x commits e mantem as modificações
+- git reset --hard HEAD~X -> reverte x commits e descarta as modificações
+- git merge <X> -> faz o merge do branch X no branch atual
+- git config merge.ff false -> muda a estratégia de merge para criar um merge commit
