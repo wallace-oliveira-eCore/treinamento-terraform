@@ -1,0 +1,10 @@
+#Treinamento Terraforn
+## Dia 01
+### Introdução ao Git
+
+### Comandos básicos
+- git init -> inicializa repositório local
+- git status -> mostra status, se tem arquivo novo, para comitar
+- git add -> adiciona arquivo a área de staging, para ser comitado
+- git commit -> grava a modificação no histórico do git
+- git log -> mostra o histórico de commits
