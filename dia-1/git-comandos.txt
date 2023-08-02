@@ -17,3 +17,4 @@
 - git merge X -> faz o merge do branch X no branch atual
 - git config merge.ff false -> muda a estratégia de merge para criar um merge commit
 
+
