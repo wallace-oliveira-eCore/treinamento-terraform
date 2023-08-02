@@ -16,5 +16,5 @@
 - git reset --hard HEAD~X -> reverte x commits e descarta as modificações
 - git merge X -> faz o merge do branch X no branch atual
 - git config merge.ff false -> muda a estratégia de merge para criar um merge commit
-
-
+- git rebase X -> faz o rebase do branch X no branch atual; insere os commits do outro branch no seu branch e coloca SEMPRE os seus commits no HEAD sem criar merge commit
+- git pull -> traz as modificações do repositório remoto
