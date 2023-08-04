@@ -3,5 +3,5 @@ hash*
 tmp/*
 bin/*
 .vscode
-.terraform*
+.terraform
 *.tfstate*
