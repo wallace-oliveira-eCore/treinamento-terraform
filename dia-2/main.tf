@@ -1,12 +1,10 @@
-data "aws_ssm_parameter" "al2_ami" {
-  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-ebs"
-}
-
-# define vpc
-resource "aws_vpc" "lab_vpc" {
-  cidr_block = var.vpc_cidr
-
+# define instance
+resource "aws_instance" "vm1" {
+  ami                    = data.aws_ssm_parameter.al2_ami.value
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.lab_subnet.id
+  vpc_security_group_ids = [aws_security_group.lab_sg.id]
   tags = {
-    Name = "${var.prefix}-${var.vpc_name}"
+    Name = "${var.prefix}-${var.instance_name}"
   }
 }
