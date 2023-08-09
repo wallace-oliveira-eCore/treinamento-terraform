@@ -1,3 +1,9 @@
+# define local variable
+locals {
+  # second subnet cidr
+  public_subnet_cidr = cidrsubnet(var.vpc_cidr, 8, 1)
+}
+
 # define vpc
 resource "aws_vpc" "lab_vpc" {
   cidr_block           = var.vpc_cidr
@@ -11,7 +17,7 @@ resource "aws_vpc" "lab_vpc" {
 # define subnet
 resource "aws_subnet" "lab_subnet" {
   vpc_id                  = aws_vpc.lab_vpc.id
-  cidr_block              = "192.168.0.0/24"
+  cidr_block              = local.public_subnet_cidr
   availability_zone       = data.aws_availability_zones.azs.names[0]
   map_public_ip_on_launch = true
 }
@@ -46,10 +52,19 @@ resource "aws_security_group" "lab_sg" {
   name        = "${var.prefix}-lab_sg"
   description = "Lab SG"
   vpc_id      = aws_vpc.lab_vpc.id
+
   ingress {
     description = "Allow HTTP from Internet"
     from_port   = 80
     to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Allow SSH from Internet"
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

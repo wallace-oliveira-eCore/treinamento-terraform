@@ -18,3 +18,8 @@ variable "instance_name" {
   description = "Nome do tag Name da instância"
   type        = string
 }
+
+variable "welcome_msg" {
+  description = "Mensagem de boas vindas"
+  type        = string
+}
