@@ -113,4 +113,29 @@ resource "aws_security_group" "db" {
   }
 }
 
+module "alb" {
+  source  = "terraform-aws-modules/alb/aws"
+  version = "8.7.0"
 
+  name               = "lb1"
+  load_balancer_type = "application"
+
+  vpc_id          = local.vpc_id
+  subnets         = local.public_subnets_ids
+  security_groups = [aws_security_group.web.id]
+
+  target_groups = [
+    {
+      name_prefix      = "tg-"
+      backend_protocol = "HTTP"
+      backend_port     = 80
+      target_type      = "instance"
+      targets = {
+        web1 = {
+          target_id = module.webserver.instance_id
+          port      = 80
+        }
+      }
+    }
+  ]
+}
