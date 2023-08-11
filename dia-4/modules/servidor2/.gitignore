@@ -1,0 +1,7 @@
+hash
+hash*
+tmp/*
+bin/*
+.vscode
+.terraform
+.terraform.lock.hcl
